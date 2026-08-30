@@ -1,7 +1,7 @@
 {
-  "name": "registro-usuarios-mysql",
+  "name": "registro-usuarios-mysql-ocp",
   "version": "1.0.0",
-  "description": "Formulario de registro con JavaScript, Node.js y MySQL",
+  "description": "Registro de usuarios con Node.js, MySQL y estructura OCP",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

@@ -1,9 +1,8 @@
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    correo VARCHAR(150) NOT NULL UNIQUE,
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    correo_electronico VARCHAR(150) NOT NULL UNIQUE,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     edad INT NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    contrasena VARCHAR(255) NOT NULL
 );
