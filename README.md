@@ -1,20 +1,25 @@
 # Proyecto JavaScript + MySQL con OCP
 
 ## Estructura
-
 proyecto/
 ├── server.js
-├── db.js
 ├── package.json
 ├── crear_tabla.sql
-├── controllers/
-│   └── usuarioController.js
+├── .env.example
+├── .gitignore
+├── config/
+│   ├── db.js
+│   └── mailer.js
 ├── repositories/
 │   └── usuarioRepository.js
 ├── routes/
-│   └── usuarioRoutes.js
+│   ├── index.js
+│   ├── usuarioRoutes.js
+│   ├── conexionRoutes.js
+│   └── verificacionRoutes.js
 ├── services/
 │   ├── bcryptPasswordHasher.js
+│   ├── emailService.js
 │   └── usuarioService.js
 ├── validators/
 │   ├── registroRules.js
@@ -22,7 +27,6 @@ proyecto/
 └── public/
     ├── index.html
     └── app.js
-
 ## Base de datos
 
 La conexión está configurada en `db.js`:
