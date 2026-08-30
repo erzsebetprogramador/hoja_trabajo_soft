@@ -22,17 +22,36 @@ class UsuarioService {
         const token = crypto.randomBytes(32).toString("hex");
         const tokenExpira = new Date(Date.now() + 60 * 60 * 1000); // 1 hora
 
-        const idUsuario = await this.repository.crear({
-            correo: datos.correo.trim(),
-            nombre: datos.nombre.trim(),
-            apellido: datos.apellido.trim(),
-            edad: Number(datos.edad),
-            contrasenaHash,
-            token,
-            tokenExpira
-        });
+        let idUsuario;
 
-        await this.emailService.enviarVerificacion(datos.correo.trim(), token);
+        try {
+            idUsuario = await this.repository.crear({
+                correo: datos.correo.trim(),
+                nombre: datos.nombre.trim(),
+                apellido: datos.apellido.trim(),
+                edad: Number(datos.edad),
+                contrasenaHash,
+                token,
+                tokenExpira
+            });
+        } catch (error) {
+            if (error.code === "ER_DUP_ENTRY") {
+                const conflicto = new Error("Ya existe un usuario con ese correo electrónico.");
+                conflicto.tipo = "CONFLICTO";
+                throw conflicto;
+            }
+            throw error;
+        }
+
+        try {
+            await this.emailService.enviarVerificacion(datos.correo.trim(), token);
+        } catch (error) {
+            await this.repository.eliminarPorId(idUsuario).catch(() => {});
+            const errorEmail = new Error("No se pudo enviar el correo de verificación. Inténtalo nuevamente.");
+            errorEmail.tipo = "EMAIL";
+            errorEmail.causa = error;
+            throw errorEmail;
+        }
 
         return {
             idUsuario,

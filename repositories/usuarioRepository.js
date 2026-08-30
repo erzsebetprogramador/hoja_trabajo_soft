@@ -37,6 +37,13 @@ class UsuarioRepository {
             [idUsuario]
         );
     }
+
+    async eliminarPorId(idUsuario) {
+        await this.db.execute(
+            "DELETE FROM usuarios WHERE id_usuario = ?",
+            [idUsuario]
+        );
+    }
 }
 
 module.exports = UsuarioRepository;

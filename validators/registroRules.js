@@ -30,6 +30,19 @@ const reglasRegistro = [
         }
     },
     {
+        nombre: "nombres-no-vacios",
+        validar: (datos) => {
+            if (!datos.nombre.trim() || !datos.apellido.trim()) {
+                return {
+                    valido: false,
+                    mensaje: "El nombre y el apellido son obligatorios."
+                };
+            }
+
+            return { valido: true };
+        }
+    },
+    {
         nombre: "edad-valida",
         validar: (datos) => {
             const edad = Number(datos.edad);

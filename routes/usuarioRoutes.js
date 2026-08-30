@@ -11,6 +11,13 @@ function crearUsuarioRoutes(usuarioService) {
             if (error.tipo === "VALIDACION") {
                 return res.status(400).json({ error: error.message });
             }
+            if (error.tipo === "CONFLICTO") {
+                return res.status(409).json({ error: error.message });
+            }
+            if (error.tipo === "EMAIL") {
+                console.error("Error al enviar correo:", error.causa);
+                return res.status(502).json({ error: error.message });
+            }
             console.error(error);
             res.status(500).json({ error: "Error al registrar el usuario." });
         }
