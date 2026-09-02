@@ -43,24 +43,38 @@ const reglasRegistro = [
         }
     },
     {
+        // Regla Actualizada: rango de edad ajustado de 18-100 a 18-65.
         nombre: "edad-valida",
         validar: (datos) => {
             const edad = Number(datos.edad);
-            const valida = Number.isInteger(edad) && edad >= 18 && edad <= 100;
+            const valida = Number.isInteger(edad) && edad >= 18 && edad <= 65;
 
             return valida
                 ? { valido: true }
-                : { valido: false, mensaje: "La edad debe estar entre 18 y 100 años." };
+                : { valido: false, mensaje: "La edad debe estar entre 18 y 65 años." };
         }
     },
     {
-        nombre: "password-minimo",
+        // Regla Actualizada: antes solo pedia 8 caracteres.
+        // Ahora exige mayuscula, minuscula, numero y caracter especial.
+        nombre: "password-segura",
         validar: (datos) => {
-            const valida = typeof datos.password === "string" && datos.password.length >= 8;
+            const password = typeof datos.password === "string" ? datos.password : "";
+
+            const tieneLongitud = password.length >= 8;
+            const tieneMayuscula = /[A-Z]/.test(password);
+            const tieneMinuscula = /[a-z]/.test(password);
+            const tieneNumero = /\d/.test(password);
+            const tieneEspecial = /[^A-Za-z0-9]/.test(password);
+
+            const valida = tieneLongitud && tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial;
 
             return valida
                 ? { valido: true }
-                : { valido: false, mensaje: "La contraseña debe tener al menos 8 caracteres." };
+                : {
+                    valido: false,
+                    mensaje: "La contraseña debe tener al menos 8 caracteres, incluyendo mayúscula, minúscula, número y símbolo."
+                };
         }
     }
 ];

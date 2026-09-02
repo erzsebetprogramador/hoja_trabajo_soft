@@ -44,19 +44,35 @@ document.addEventListener("DOMContentLoaded", () => {
                     : { valido: false, mensaje: "El apellido es obligatorio." }
         },
         {
+            // Regla Actualizada: rango de edad ajustado de 18-100 a 18-65.
             validar: (datos) => {
                 const edad = Number(datos.edad);
 
-                return Number.isInteger(edad) && edad >= 18 && edad <= 100
+                return Number.isInteger(edad) && edad >= 18 && edad <= 65
                     ? { valido: true }
-                    : { valido: false, mensaje: "La edad debe estar entre 18 y 100 años." };
+                    : { valido: false, mensaje: "La edad debe estar entre 18 y 65 años." };
             }
         },
         {
-            validar: (datos) =>
-                datos.password.length >= 8
+            // Regla Actualizada: antes solo pedia 8 caracteres.
+            // Ahora exige mayuscula, minuscula, numero y caracter especial,
+            // igual que en el backend (registroRules.js).
+            validar: (datos) => {
+                const password = datos.password;
+
+                const tieneLongitud = password.length >= 8;
+                const tieneMayuscula = /[A-Z]/.test(password);
+                const tieneMinuscula = /[a-z]/.test(password);
+                const tieneNumero = /\d/.test(password);
+                const tieneEspecial = /[^A-Za-z0-9]/.test(password);
+
+                return tieneLongitud && tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial
                     ? { valido: true }
-                    : { valido: false, mensaje: "La contraseña debe tener al menos 8 caracteres." }
+                    : {
+                        valido: false,
+                        mensaje: "La contraseña debe tener al menos 8 caracteres, incluyendo mayúscula, minúscula, número y símbolo."
+                    };
+            }
         }
     ];
 
