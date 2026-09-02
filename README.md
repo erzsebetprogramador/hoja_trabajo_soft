@@ -27,6 +27,11 @@ proyecto/
 └── public/
     ├── index.html
     └── app.js
+
+
+<img width="1224" height="699" alt="Diagrama de clases" src="https://github.com/user-attachments/assets/b156a81b-5692-4e3c-97bd-875b39daaf00" />
+
+
 ## Base de datos
 
 La conexión está configurada en `db.js`:
