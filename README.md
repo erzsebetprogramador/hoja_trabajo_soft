@@ -33,7 +33,7 @@ proyecto/
 
 enlace para mejor visualización del diagrama:
 
-[diagrama_clases_con_dto.html](https://github.com/user-attachments/files/31765782/diagrama_clases_con_dto.html)
+[diagrama_clases_con_dto.html](https://github.com/user-attachments/files/31765892/diagrama_clases_con_dto.html)
 
 
 ## Base de datos
