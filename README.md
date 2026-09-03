@@ -61,7 +61,7 @@ La tabla esperada es:
 
    http://localhost:3000
 
-6. Para comprobar únicamente la conexión con MySQL:
+6. Para comprobar únicamente la conexión con postgre:
 
    http://localhost:3000/probar-conexion
 
