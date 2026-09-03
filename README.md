@@ -28,12 +28,12 @@ proyecto/
     ├── index.html
     └── app.js
 
-<img width="1887" height="772" alt="Captura de pantalla 2026-09-02 203932" src="https://github.com/user-attachments/assets/ce6dea2b-f93e-4d7e-bcd7-4929bd02a4bf" />
+<img width="1895" height="772" alt="Captura de pantalla 2026-09-02 210305" src="https://github.com/user-attachments/assets/d85142bb-fdac-4627-8743-4f2ef8785013" />
+
 
 enlace para mejor visualización del diagrama:
 
-[diagrama_clases_ordenado_por_capas.html](https://github.com/user-attachments/files/31765280/diagrama_clases_ordenado_por_capas.html)
-
+[diagrama_clases_con_dto.html](https://github.com/user-attachments/files/31765782/diagrama_clases_con_dto.html)
 
 
 ## Base de datos
